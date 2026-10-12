@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "cf2e57112233e8e92f70",
+  "position": {
+    "x": 379.84251968503935,
+    "y": 204.09448818897636,
+    "z": 1,
+    "height": 263.62204724409446,
+    "width": 316.06299212598424,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tips"
+                    }
+                  },
+                  "Property": "day"
+                }
+              },
+              "queryRef": "tips.day",
+              "nativeQueryRef": "day",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "tips"
+                        }
+                      },
+                      "Property": "total_bill"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(tips.total_bill)",
+              "nativeQueryRef": "Sum of total_bill"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "tips"
+                      }
+                    },
+                    "Property": "total_bill"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
