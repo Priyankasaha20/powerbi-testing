@@ -1,0 +1,5 @@
+relationship 8b522ecd-d2c1-4fbe-abef-02aafeeb8a8d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: AmericaBankNew.'Date Joined'
+	toColumn: LocalDateTable_a3419909-2e99-4288-ac94-9ad2af47ce17.Date
+

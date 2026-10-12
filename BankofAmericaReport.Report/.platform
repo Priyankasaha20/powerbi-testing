@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "BankofAmericaReport"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e3d54185-b646-4c08-9e0e-c25033ac8a27"
+  }
+}

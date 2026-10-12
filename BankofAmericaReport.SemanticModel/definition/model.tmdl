@@ -1,0 +1,21 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["AmericaBankNew"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table AmericaBankNew
+ref table DateTableTemplate_18641519-4c06-4d9a-81e1-19bd178f3465
+ref table LocalDateTable_a3419909-2e99-4288-ac94-9ad2af47ce17
+
+ref cultureInfo en-IN
+
