@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "0b31e9b21285c8c167b4",
+  "position": {
+    "x": 11.043003594727734,
+    "y": 16.5645053920916,
+    "z": 8000,
+    "height": 134.3565437358541,
+    "width": 576.0766875249634,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "America Bank 2026 Report",
+                    "textStyle": {
+                      "fontFamily": "Cambria",
+                      "fontSize": "44pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

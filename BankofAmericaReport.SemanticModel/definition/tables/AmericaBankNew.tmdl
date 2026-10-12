@@ -1,0 +1,171 @@
+table AmericaBankNew
+	lineageTag: 390cd29c-a91e-48c0-8540-17bf8c19e5a5
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: a9d0eb66-3c30-42b2-aaf7-829713e8b61c
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Name'
+		dataType: string
+		lineageTag: db8434bf-3ef0-40d7-9249-e0cbad0d9430
+		summarizeBy: none
+		sourceColumn: Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: 02826def-b7c3-4637-b98f-e80ab9ff7e99
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: 634b2200-60b6-41b7-aa0b-cd5319f17064
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: 478d47fe-bbb7-43c5-9505-9da75cdfbd15
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Job Classification'
+		dataType: string
+		lineageTag: 6a30d53f-7ab8-4cf3-9a11-044fdfe94d44
+		summarizeBy: none
+		sourceColumn: Job Classification
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Joined'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 665bbfaf-4d3b-4080-8a88-93e8e345b401
+		summarizeBy: none
+		sourceColumn: Date Joined
+
+		variation Variation
+			isDefault
+			relationship: 8b522ecd-d2c1-4fbe-abef-02aafeeb8a8d
+			defaultHierarchy: LocalDateTable_a3419909-2e99-4288-ac94-9ad2af47ce17.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Balance
+		dataType: string
+		lineageTag: a8ff00e2-4a44-41f4-b8fd-4b7754e9b949
+		summarizeBy: none
+		sourceColumn: Balance
+
+		annotation SummarizationSetBy = Automatic
+
+	column marital
+		dataType: string
+		lineageTag: 06ce108b-4ce1-4d3d-bd44-95d7816fb7a0
+		summarizeBy: none
+		sourceColumn: marital
+
+		annotation SummarizationSetBy = Automatic
+
+	column education
+		dataType: string
+		lineageTag: 52abddd4-59f8-4575-9efe-c9cd5fff3399
+		summarizeBy: none
+		sourceColumn: education
+
+		annotation SummarizationSetBy = Automatic
+
+	column houseloan
+		dataType: string
+		lineageTag: e004e2d1-81eb-4eac-affc-35ba8aad738c
+		summarizeBy: none
+		sourceColumn: houseloan
+
+		annotation SummarizationSetBy = Automatic
+
+	column otherloan
+		dataType: string
+		lineageTag: 1762c826-c167-44ff-a268-a7c7d03e93fa
+		summarizeBy: none
+		sourceColumn: otherloan
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact
+		dataType: string
+		lineageTag: 353f156e-6fe9-433a-a6fe-5b15fafadecf
+		summarizeBy: none
+		sourceColumn: contact
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration
+		dataType: int64
+		formatString: 0
+		lineageTag: 9eadc6ca-68cb-4839-a008-08179a4c3fbe
+		summarizeBy: sum
+		sourceColumn: duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column campaign
+		dataType: int64
+		formatString: 0
+		lineageTag: 129b76a3-5b4e-4209-9429-f5b0440c0b73
+		summarizeBy: sum
+		sourceColumn: campaign
+
+		annotation SummarizationSetBy = Automatic
+
+	column poutcome
+		dataType: string
+		lineageTag: a8586b4e-6ecf-4e6a-8873-7d0a58753127
+		summarizeBy: none
+		sourceColumn: poutcome
+
+		annotation SummarizationSetBy = Automatic
+
+	column y
+		dataType: string
+		lineageTag: 29293ce6-74cd-4ba2-92bc-65943b2532c3
+		summarizeBy: none
+		sourceColumn: y
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer ID'
+		dataType: string
+		lineageTag: 6c4b233a-9155-4961-84c8-f7ae3b65f44c
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition AmericaBankNew = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\priyanka\Downloads\AmericaBankNew.csv"),[Delimiter=",", Columns=18, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ID", Int64.Type}, {"Full Name", type text}, {"Gender", type text}, {"Age", Int64.Type}, {"State", type text}, {"Job Classification", type text}, {"Date Joined", type date}, {"Balance", type text}, {"marital", type text}, {"education", type text}, {"houseloan", type text}, {"otherloan", type text}, {"contact", type text}, {"duration", Int64.Type}, {"campaign", Int64.Type}, {"poutcome", type text}, {"y", type text}, {"Customer ID", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

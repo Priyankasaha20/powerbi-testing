@@ -1,0 +1,76 @@
+table tips
+	lineageTag: b5472e26-03dd-43b1-a0be-e1d42ca443bb
+
+	column total_bill
+		dataType: double
+		lineageTag: 29c17bca-d2e0-437c-91e7-04a75b928e2b
+		summarizeBy: sum
+		sourceColumn: total_bill
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tip
+		dataType: double
+		lineageTag: 3e39a422-3b51-42d9-b7f3-e35081f24a61
+		summarizeBy: sum
+		sourceColumn: tip
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sex
+		dataType: string
+		lineageTag: 951c3595-5172-4182-93c8-b9bcca22035e
+		summarizeBy: none
+		sourceColumn: sex
+
+		annotation SummarizationSetBy = Automatic
+
+	column smoker
+		dataType: string
+		lineageTag: b2489535-a909-41c2-8710-92b44a2f86ed
+		summarizeBy: none
+		sourceColumn: smoker
+
+		annotation SummarizationSetBy = Automatic
+
+	column day
+		dataType: string
+		lineageTag: cc870b7a-1b37-4ef3-972a-87f388be999c
+		summarizeBy: none
+		sourceColumn: day
+
+		annotation SummarizationSetBy = Automatic
+
+	column time
+		dataType: string
+		lineageTag: b4a1c1f5-d4ef-40f8-bff9-277b43573755
+		summarizeBy: none
+		sourceColumn: time
+
+		annotation SummarizationSetBy = Automatic
+
+	column size
+		dataType: int64
+		formatString: 0
+		lineageTag: 995f5834-fa42-4f13-8863-99b29c11c21d
+		summarizeBy: sum
+		sourceColumn: size
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tips = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv"),[Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"total_bill", type number}, {"tip", type number}, {"sex", type text}, {"smoker", type text}, {"day", type text}, {"time", type text}, {"size", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
